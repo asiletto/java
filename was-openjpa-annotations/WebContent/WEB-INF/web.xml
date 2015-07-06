@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>was-openjpa-xml</display-name>
+
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+	
+	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+	    <param-value>/WEB-INF/spring-context.xml</param-value>
+	</context-param>
+
+	<resource-ref>
+		<res-ref-name>jdbc/testJdbc</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	
+	<persistence-context-ref>
+		<persistence-context-ref-name>jpa/testJPAPersistence</persistence-context-ref-name>
+		<persistence-unit-name>TestJPAPersistence</persistence-unit-name>
+		<persistence-context-type>Transaction</persistence-context-type>
+	</persistence-context-ref>
+
+	<servlet>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>test.web.TestServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

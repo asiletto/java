@@ -1,0 +1,1 @@
+http://www-01.ibm.com/support/knowledgecenter/SSZH4A_5.0.5/com.ibm.worklight.help.doc/admin/t_configuring_websphere_application_server_for_my_sql_manually.html
