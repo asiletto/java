@@ -23,18 +23,18 @@ public class TestDaoJpa implements TestDao {
 	@Transactional
 	public void insertSomeData() {
 
-		Compagnia unipol = new Compagnia();
-		unipol.setNome("Unipol");
+		Compagnia siletto = new Compagnia();
+		siletto.setNome("siletto.it");
 		
 		Cliente mario = new Cliente();
 		mario.setNome("Mario Rossi");
-		mario.setCompagnia(unipol);
+		mario.setCompagnia(siletto);
 
 		Cliente luigi = new Cliente();
 		luigi.setNome("Luigi Verdi");
-		luigi.setCompagnia(unipol);
+		luigi.setCompagnia(siletto);
 
-		entityManager.persist(unipol);
+		entityManager.persist(siletto);
 		entityManager.persist(mario);
 		entityManager.persist(luigi);
 
@@ -51,8 +51,8 @@ public class TestDaoJpa implements TestDao {
 	@Override
 	@Transactional
 	public void testTransazioneFallita() {
-		Compagnia unipol = (Compagnia)entityManager.createNamedQuery("findAllCompagnie").getSingleResult();
-		entityManager.remove(unipol);
+		Compagnia siletto = (Compagnia)entityManager.createNamedQuery("findAllCompagnie").getSingleResult();
+		entityManager.remove(siletto);
 		throw new RuntimeException("test transazione");
 	}
 	
