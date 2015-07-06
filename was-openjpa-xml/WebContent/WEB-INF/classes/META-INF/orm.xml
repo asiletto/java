@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm    
+   http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+   version="1.0">
+      
+   <description> XML Mapping file</description>
+
+	<named-query name="findAllCompagnie">
+		<query>SELECT o FROM Compagnia o</query>
+	</named-query>
+	 
+	<named-query name="clientiByCompagnia">
+		<query>SELECT o FROM Cliente o WHERE o.compagnia.nome = :nomeCompagnia</query>
+	</named-query>
+
+   <entity class="test.entities.Compagnia">        
+      <table name="TEST_COMPAGNIE"/>
+      <attributes>
+      
+         <id name="id">
+            <generated-value strategy="IDENTITY"/>
+         </id>
+         
+         <basic name="nome">
+         </basic>
+         
+         <one-to-many name="clienti" target-entity="test.entities.Cliente" mapped-by="compagnia"/>
+         
+      </attributes>
+   </entity>
+   
+   <entity class="test.entities.Cliente">        
+      <table name="TEST_CLIENTI"/>
+      <attributes>
+      
+         <id name="id">
+            <generated-value strategy="IDENTITY"/>
+         </id>
+         
+         <basic name="nome">
+         </basic>
+         
+		<many-to-one name="compagnia" fetch="LAZY">
+            <join-column name="ID_COMPAGNIA"/>
+        </many-to-one>
+         
+      </attributes>
+   </entity>
+   
+</entity-mappings>
