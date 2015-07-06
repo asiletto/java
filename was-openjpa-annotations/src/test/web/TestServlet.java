@@ -38,7 +38,7 @@ public class TestServlet extends HttpServlet {
 		
 			dao.insertSomeData();
 			
-			List<Cliente> clienti = dao.getClientiByCompagnia("unipol");
+			List<Cliente> clienti = dao.getClientiByCompagnia("siletto.it");
 
 			try{
 				dao.testTransazioneFallita();

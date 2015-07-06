@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import test.dao.TestDao;
 import test.entities.Cliente;
 import test.entities.Compagnia;
-import test.entities.Employee;
 
 @Repository("testDaoJpa")
 public class TestDaoJpa implements TestDao {

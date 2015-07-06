@@ -38,17 +38,17 @@ public class TestServlet extends HttpServlet {
 		
 			dao.insertSomeData();
 			
-//			List<Cliente> clienti = dao.getClientiByCompagnia("unipol");
+			List<Cliente> clienti = dao.getClientiByCompagnia("siletto.it");
 
 			try{
-//				dao.testTransazioneFallita();
+				dao.testTransazioneFallita();
 			}catch(RuntimeException e){}
 			
 			response.getOutputStream().print("success\n");
-/*			for (Cliente cliente : clienti) {
+			for (Cliente cliente : clienti) {
 				response.getOutputStream().print(cliente.getNome() + " - "+ cliente.getCompagnia().getNome() + "\n");
 			}
-*/
+
 		
 		}catch(Exception e){
 			response.getOutputStream().print("failure\n");

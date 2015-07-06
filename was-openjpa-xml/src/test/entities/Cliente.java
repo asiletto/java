@@ -2,6 +2,7 @@ package test.entities;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Cliente implements Serializable	{
 
 	private Long id;
