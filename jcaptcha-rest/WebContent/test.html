@@ -1,0 +1,66 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	reload();
+		
+	$("#solve").click(solve);
+	
+});
+
+var randomString = function (len, bits){
+    bits = bits || 36;
+    var outStr = "", newStr;
+    while (outStr.length < len)
+    {
+        newStr = Math.random().toString(bits).slice(2);
+        outStr += newStr.slice(0, Math.min(newStr.length, (len - outStr.length)));
+    }
+    return outStr.toUpperCase();
+};
+
+function reload(){
+	var token = randomString(30, 16);
+	$("#captcha").attr({src:"rest/captcha.jpg?token="+token});
+	$("#token").attr({value:token});
+	$("#answer").val("");
+	$("#answer").focus();
+}
+
+function solve(){
+
+	$.ajax({
+	  method: "POST",
+	  url: "rest/resolve",
+	  data: {
+	  	"token": $("#token").val(),
+	  	"answer": $("#answer").val()
+	  },
+	  dataType: 'json'
+	}).done(function(res) {
+		$("#testLists").append("response: "+ JSON.stringify(res) + "<br/>");
+		reload();
+	});
+}
+
+</script> 
+</head>
+<body>
+
+<h2>Test Captcha REST</h2>
+
+<form>
+    <img id="captcha" src="loading.gif" /><br/>
+	Token: <input type="text" id="token"/><br/>
+    Answer: <input type="text" id="answer" value="" /><br/>
+    <input id="solve" type="button" value="solve"/>
+</form>
+
+<div id="testLists" style="font-family: 'DejaVu Sans Mono', monospace;">
+
+</div>
+
+</body>
+</html>
