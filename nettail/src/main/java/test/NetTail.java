@@ -142,9 +142,9 @@ public class NetTail {
 			credsProvider.setCredentials(authScope, credentials);
 
 			this.httpClient = HttpClients
-								.custom()
-								.setDefaultCredentialsProvider(credsProvider)
-								.build();
+						.custom()
+						.setDefaultCredentialsProvider(credsProvider)
+						.build();
 
 			AuthCache authCache = new BasicAuthCache();
 
@@ -155,8 +155,8 @@ public class NetTail {
 			this.localContext.setAuthCache(authCache);
 		} else {
 			this.httpClient = HttpClients
-								.custom()
-								.build();
+						.custom()
+						.build();
 		}
 	}
 }
